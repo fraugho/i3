@@ -7,8 +7,7 @@ font pango:Noto Mono Regular 15
 # Window color settings
     
     # class                 border  backgr. text    indicator
-    #client.focused          #FFFFFF #FFFFFF #e5e5e5 #6790EB
-    #client.unfocused        #222222 #222222 #aaaaaa #222222
+    #client.focused          #FFFFFF #FFFFFF #e5e5e5 #6790EB #client.unfocused        #222222 #222222 #aaaaaa #222222
     #client.focused_inactive #222222 #222222 #a9a9a9 #222222
     #client.placeholder      #222222 #222222 #aaaaaa #222222
     #client.urgent           #d42121 #d42121 #f7f7f7 #d42121
@@ -27,17 +26,12 @@ client.urgent           #d42121 #d42121 #d42121 #d42121
 #Workspace Lock
 for_window [class="^.*"] urgent disable
 assign [class="Vivaldi"] 1
-assign [class="code"] 2
 assign [class="Spotify"] 4
 assign [class="steam"] 5
-assign [class="Jellyfinmediaplayer"] 10
-assign [class="Blueberry"] 9
-assign [class="rog-control-center"] 9
 
 # No border for all windows
 for_window [class=".*"] border pixel 2
 hide_edge_borders both
-
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -166,20 +160,13 @@ bindsym $mod+r mode "resize"
 
 #Setup Startup
 exec --no-startup-id i3-msg 'workspace 1; exec vivaldi'
-exec --no-startup-id i3-msg 'workspace 2; exec code'
 exec --no-startup-id i3-msg 'workspace 3; exec nautilus'
 exec --no-startup-id i3-msg 'workspace 4; exec spotify'
 exec --no-startup-id i3-msg 'workspace 5; exec steam'
-exec --no-startup-id i3-msg 'workspace 10; exec jellyfinmediaplayer'
+exec --no-startup-id i3-msg 'workspace 10; exec blueman'
 
 #Wifi Applet
 exec --no-startup-id nm-applet
-
-#Blueberry
-exec --no-startup-id blueberry
-
-#Rog Control Center
-exec --no-startup-id rog-control-center
 
 # Load Xresources
 exec --no-startup-id xrdb ~/.Xresources
@@ -189,7 +176,7 @@ exec --no-startup-id xrdb ~/.Xresources
 exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
 
 # feh sets wallpaper
-exec --no-startup-id feh --bg-fill ~/.config/Wallpapers/samuri-modified2.jpg &
+exec --no-startup-id feh --bg-fill ~/.config/wallpapers/darkness_devil.jpg &
 
 # Polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh &
@@ -211,17 +198,15 @@ bindsym $mod+x exec multimonitor
 bindsym F7 exec brightnessctl set 5%- # Decrease brightness by 5%
 bindsym F8 exec brightnessctl set +5% # Increase brightness by 5%
 
-
-
 # Logout
 bindsym $mod+Shift+u exec obquit
 
 # sleep
-exec --no-startup-id caffeine start&
+exec --no-startup-id caffeine start &
 exec_always xautolock -detectsleep -time 10 -locker "i3lock -c 000000" -corners 0-0- -cornerdelay 5
 
-###---Go To Location Open Terminal---###
-bindsym $mod+g exec openterminalin
+#quiet laptop
+exec --no-startup-id tlp start asusctl profile -P Balanced &
 
 ###---Screenshot---###
 bindsym Print exec --no-startup-id flameshot gui
