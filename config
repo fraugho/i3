@@ -176,7 +176,7 @@ exec --no-startup-id xrdb ~/.Xresources
 exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
 
 # feh sets wallpaper
-exec --no-startup-id feh --bg-fill ~/.config/wallpapers/darkness_devil.jpg &
+exec --no-startup-id feh --bg-fill ~/.config/wallpapers/samuri_cropped_noir.jpg &
 
 # Polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh &
@@ -207,6 +207,9 @@ exec_always xautolock -detectsleep -time 10 -locker "i3lock -c 000000" -corners 
 
 #quiet laptop
 exec --no-startup-id asusctl profile -P Balanced &
+
+#bluetooth applet
+exec --no-startup-id blueman-applet &
 
 ###---Screenshot---###
 bindsym Print exec --no-startup-id flameshot gui
